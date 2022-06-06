@@ -1,7 +1,9 @@
 from crypt import methods
 import functools
+import requests
 from operator import methodcaller
 from tkinter.messagebox import NO
+from urllib import response
 from flask import (
     Blueprint, flash, g, redirect, render_template, request, session, url_for
 )
@@ -85,10 +87,11 @@ def logout():
     session.clear()
     return redirect(url_for('index'))
 
-'''@app.route('/start')
-     def start():
-        response = requests.get('https://api.kanye.rest/')
-        response.raise_for_status()
-        data = response.json()
-        useable = data["quote"]
-        return render_template('start.html', quote = useable)'''
+@bp.route('/show')
+def show():
+    response = requests.get('https://api.kanye.rest/')
+    response.raise_for_status()
+    data = response.json()
+    useable = data["quote"]
+    return render_template('auth/show.html', quote = useable)
+
