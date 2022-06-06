@@ -1,0 +1,39 @@
+html,
+body,
+.content {
+    height: 100%;
+}
+
+@media (min-width: 550px) and (max-width: 750px) {
+    html,
+    body,
+    .intro {
+        height: 750px;
+    }
+}
+
+@media (min-width: 800px) and (max-width: 850px) {
+    html,
+    body,
+    .intro {
+        height: 750px;
+    }
+}
+
+.content .mask-custom {
+    backdrop-filter: blur(15px);
+    background-color: rgba(255, 255, 255, .2);
+    border-radius: 3em;
+    border: 2px solid rgba(255, 255, 255, .1);
+    background-clip: padding-box;
+    box-shadow: 10px 10px 10px rgba(46, 54, 68, 0.03);
+}
+
+.content .boxthiswarning {
+    margin-bottom: 15px;
+}
+
+.content .mask-custom .flash {
+    border: 1px solid #ff0000;
+    color: #ff0000;
+}

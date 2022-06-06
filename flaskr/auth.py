@@ -11,6 +11,7 @@ from flaskr.db import get_db
 
 bp = Blueprint('auth', __name__, url_prefix = '/auth')
 
+
 @bp.route('/register', methods = ('GET','POST'))
 def register():
     if request.method == 'POST':
@@ -50,11 +51,11 @@ def register():
 
 @bp.route('/login', methods = ('GET', 'POST'))
 def login():
-    if request.method == 'POST':
+    error  = None
+    if request.method == 'POST' and 'username' in request.form and 'password' in request.form:
         username = request.form['username']
         password = request.form['password']
         db = get_db()
-        error  = None
         user = db.execute('SELECT * FROM userInfo WHERE username = ?', (username,)).fetchone()
 
         if user is None:
@@ -66,7 +67,8 @@ def login():
             session['user_id'] = user['id']
             return redirect(url_for('index'))
         flash(error)
-
+    else:
+        error = 'Please fill the form'
     return render_template('auth/login.html')
 
 @bp.before_app_request
@@ -83,3 +85,10 @@ def logout():
     session.clear()
     return redirect(url_for('index'))
 
+'''@app.route('/start')
+     def start():
+        response = requests.get('https://api.kanye.rest/')
+        response.raise_for_status()
+        data = response.json()
+        useable = data["quote"]
+        return render_template('start.html', quote = useable)'''

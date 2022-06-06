@@ -1,19 +1,87 @@
-{% extends 'base.html' %} {% block header %}
-<h1>{% block title %}Register{% endblock %}</h1>
-{% endblock %} {% block content %}
-<form method="post">
-    <label for="firstName">First Name</label>
-    <input name="firstName" id="firstName">
-    <label for="lastName">Last Name</label>
-    <input type="text" name="lastName" id="lastName">
-    <label for="age">Age</label>
-    <input type="number" name="age" id="age">
-    <label for="gender">Gender</label>
-    <input type="text" name="gender" id="gender">
-    <label for="username">Username</label>
-    <input name="username" id="username">
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password">
-    <input type="submit" value="Register">
-</form>
+{% extends 'base.html' %} {% block content %}
+
+<div class="mask d-flex align-items-center h-100 ">
+    <div class="container">
+        <div class="row justify-content-center ">
+            <div class="col-12 col-md-10 col-lg-7 col-xl-6">
+                <div class="card mask-custom">
+                    <div class="card-body p-5 text-white">
+                        <div class="my-4">
+                            <h2 class="text-center mb-5">Register</h2>
+                            <div class="text-center boxthiswarning">
+                                {% for message in get_flashed_messages() %}
+                                <div class="flash">{{ message }}</div>
+                                {% endfor %}
+                            </div>
+
+                            <form method="post">
+                                <div class="row">
+                                    <div class="col-12 col-md-6 mb-4">
+                                        <div class="form-outline form-white">
+                                            <input type="text" name="firstName" id="firstName" placeholder="First Name" class="form-control form-control-lg" required>
+                                            <!--<label class="form-label" for="firstName">First Name</label>-->
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6 mb-4">
+                                        <div class="form-outline form-white">
+                                            <input type="text" name="lastName" id="lastName" placeholder="Last Name" class="form-control form-control-lg" required>
+                                            <!--<label class="form-label" for="lastName">Last Name</label>-->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 col-md-6 mb-4">
+                                        <div class="form-outline form-white">
+                                            <input type="number" name="age" id="age" placeholder="Age" class="form-control form-control-lg" required>
+                                            <!--<label class="form-label" for="age">Age</label>-->
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6 mb-4">
+                                        <div class="form-outline form-white">
+                                            <input type="text" name="gender" id="gender" placeholder="Gender" class="form-control form-control-lg" required>
+                                            <!--<label class="form-label" for="gender">Gender</label>-->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-outline form-white mb-4">
+                                    <input type="text" name="username" id="username" placeholder="Username" class="form-control form-control-lg" required>
+                                    <!--<label class="form-label" for="username">Username</label>-->
+                                </div>
+                                <div class="form-outline form-white mb-4">
+                                    <input type="password" name="password" id="password" placeholder="Password" class="form-control form-control-lg" required>
+                                    <!--<label class="form-label" for="password">Password</label>-->
+                                </div>
+                                <button type="submit" class="btn btn-light btn-block mb-4">Sign up</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 {% endblock %}
+
+<!--
+
+    <form method="post">
+    <label for="firstName">First Name</label>
+    <input type="text" name="firstName" id="firstName" required>
+    <label for="lastName">Last Name</label>
+    <input type="text" name="lastName" id="lastName" required>
+    <label for="age">Age</label>
+    <input type="number" name="age" id="age" required>
+    <label for="gender">Gender</label>
+    <input type="text" name="gender" id="gender" required>
+    <label for="username">Username</label>
+    <input name="username" id="username" required>
+    <label for="password">Password</label>
+    <input type="password" name="password" id="password" required>
+    <input class = "btn btn-light btn-block mb-4" type="submit" value="Register">
+</form>
+ 
+<button type="submit" class="btn btn-light btn-block mb-4">Sign up</button>
+
+
+-->
