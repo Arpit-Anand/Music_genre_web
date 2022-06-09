@@ -11,7 +11,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
         <div class="container">
-            <a class="navbar-link text-white" href="{{ url_for('auth.show')}}">
+            <a class="navbar-link text-white " href="{{ url_for('auth.show')}}">
                 <h2>Genrify</h2>
             </a>
             <button class="navbar-toggler " type="button " data-bs-toggle="collapse " data-bs-target="#navbarSupportedContent " aria-controls="navbarSupportedContent " aria-expanded="false " aria-label="Toggle navigation ">
@@ -19,6 +19,15 @@
           </button>
             <div class="collapse navbar-collapse " id="navbarSupportedContent ">
                 <ul class="navbar-nav ms-auto ">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('charts.hot10') }}">Top 10 Songs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('charts.album10') }}">Top 10 Album</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('charts.artist10') }}">Top 10 Artist</a>
+                    </li>
                     {% if g.user %}
                     <li class="nav-item ">
                         <span>{{ g.user['username'] }}</span>
@@ -39,7 +48,7 @@
             </div>
         </div>
     </nav>
-    <section class="content ">
+    <section class="content">
         <div class="bg-image h-100 " style="background-image: url( 'https://mdbootstrap.com/img/Photos/new-templates/glassmorphism-article/img5.jpg'); ">
             <header>
                 {% block header %}{% endblock %}

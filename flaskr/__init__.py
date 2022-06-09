@@ -2,6 +2,7 @@ import imp
 import os
 import requests
 from flask import ( Flask, render_template)
+from datetime import (date, timedelta)
 
 def create_app(test_config = None):
     app = Flask(__name__, instance_relative_config=True)
@@ -18,14 +19,16 @@ def create_app(test_config = None):
         os.makedirs(app.instance_path)
     except OSError:
         pass
-    @app.route('/hello')
-    def hello():
-        return "Hello World"
 
     from . import db
     db.init_app(app)
 
     from . import auth
     app.register_blueprint(auth.bp)
-     
+    
+    from . import charts
+    app.register_blueprint(charts.bp)
+
+    from . import pred
+    app.register_blueprint(pred.bp)
     return app

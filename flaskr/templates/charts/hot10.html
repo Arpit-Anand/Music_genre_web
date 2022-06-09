@@ -1,0 +1,38 @@
+{% extends 'base.html' %}{% block content %}
+
+<div class="bg-image h-100" style="background-image: url(https://mdbootstrap.com/img/Photos/new-templates/glassmorphism-article/img7.jpg);">
+    <div class="mask d-flex align-items-center h-100">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="card table-custom">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-borderless text-white mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">RANK</th>
+                                            <th scope="col">TITLE</th>
+                                            <th scope="col">ARTIST/S</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for key,value in chart.items() %}
+                                        <tr scope="row">
+                                            <td> {{ value['rank'] }}</td>
+                                            <td> {{ value['title'] }} </td>
+                                            <td> {{ value['artist'] }} </td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
