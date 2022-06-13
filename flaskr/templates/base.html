@@ -18,7 +18,7 @@
             <span class="navbar-toggler-icon "></span>
           </button>
             <div class="collapse navbar-collapse " id="navbarSupportedContent ">
-                <ul class="navbar-nav ms-auto ">
+                <ul class="navbar-nav me-auto ">
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('charts.hot10') }}">Top 10 Songs</a>
                     </li>
@@ -28,12 +28,14 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('charts.artist10') }}">Top 10 Artist</a>
                     </li>
+                </ul>
+                <ul class="navbar-nav ms-auto">
                     {% if g.user %}
-                    <li class="nav-item ">
-                        <span>{{ g.user['username'] }}</span>
+                    <li class="nav-item">
+                        <a class="navbar-brand" href="{{ url_for('pred.classify') }}"><span>{{ g.user['username'] }}</span></a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link " href="{{ url_for( 'auth.logout') }} ">History</a>
+                        <a class="nav-link " href="{{ url_for( 'pred.history', id = g.user['id']) }} ">History</a>
                     </li>
                     <li class="nav-item ">
                         <a class="nav-link " href="{{ url_for( 'auth.logout') }} ">Log Out</a>

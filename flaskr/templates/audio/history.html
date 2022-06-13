@@ -1,0 +1,33 @@
+{% extends 'base.html' %}{% block content %}
+
+<div class="gradient-custom-2 h-100">
+    <div class="mask d-flex align-items-center h-100">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="table-responsive table-scroll" data-mdb-perfect-scrollbar=" true " style="position: relative; height: 500px; " ">
+                        <table class="table table-light table-bordered mb-0 ">
+                            <thead style="background-color: #393939; ">
+                                <tr class="text-success ">
+                                    <th scope="col ">Title</th>
+                                    <th scope="col ">Genre</th>
+                                    <th scope="col ">Date/time</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for row in data %}
+                                <tr scope="row ">
+                                    <td>{{ row['trackName'] }}</td>
+                                    <td> {{ row['genre'] }}</td>
+                                    <td> {{ row['stamp'] }} </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

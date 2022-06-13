@@ -40,3 +40,11 @@ def classify():
             return render_template('audio/index.html', message = predictionMessage)
     return render_template('audio/index.html')
 
+@bp.route('/history', methods=('GET', 'POST'))
+@login_required
+def history():
+    id = g.user['id']
+    db = get_db()
+    his = db.execute('SELECT trackName, genre, stamp FROM history WHERE usid = ?', (id,)).fetchall()
+    return render_template('audio/history.html', data = his)
+
